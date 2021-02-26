@@ -1,0 +1,50 @@
+<html>
+<head>
+<meta charset="utf-8">
+
+<!-- Load d3.js -->
+<script src="https://d3js.org/d3.v4.js"></script>
+
+</head>
+<body>
+    <button id="increase">Increase</button>
+    <button id="decrease">Decrease</button>
+</body>
+
+<style>
+ellipse {
+    stroke: none;
+    fill: brown;
+    opacity: 0.7;
+}
+</style>
+<script>
+var svg = d3.select("body").append("svg");
+var scale = 1;
+svg.attr("width", 500).attr("height", 500);
+var g = svg.append("g")
+g.append("ellipse")
+    .attr("cx", function (d) {
+    return 300;
+})
+
+
+    .attr("cy", function (d) {
+    return 100;
+})
+    .attr("rx", 150)
+    .attr("ry", 100);
+d3.select("#increase").on("click", increase);
+d3.select("#decrease").on("click", decrease);
+//increase via scaling
+function increase() {
+    scale +=0.1;
+    g.transition().delay("100").attr("transform", "scale("+scale+")");
+    
+}
+function decrease() {
+    scale -=0.1;
+    g.transition().delay("100").attr("transform", "scale("+scale+")");
+}
+</script>
+</html>
