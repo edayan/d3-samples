@@ -236,6 +236,7 @@ d3.json('data.json', function (error, rawData) {
     };
   });
 
+  console.log('data', data)
   d3.json('markers.json', function (error, markerData) {
     if (error) {
       console.error(error);
